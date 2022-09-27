@@ -1,3 +1,5 @@
+from crypt import methods
+from sqlite3 import Cursor
 from flask import Flask, render_template, request
 from pymysql import connections
 import os
@@ -30,9 +32,9 @@ def home():
 def addEmp():
     return render_template('addEmployee.html')
 
-@app.route("/about", methods=['POST'])
-def about():
-    return render_template('www.intellipaat.com')
+@app.route("/searchemp/", methods=['GET', 'POST'])
+def addEmp():
+    return render_template('searchEmployee.html')
 
 
 @app.route("/addemp", methods=['POST'])
@@ -82,6 +84,28 @@ def AddEmp():
     print("all modification done...")
     return render_template('addEmployeeOutput.html', name=emp_name)
 
+
+@app.route("/searchemp",methods=['POST','GET'])
+def SearchEmp():
+
+    emp_id = request.form['emp_id']
+
+    select_emp = "SELECT * FROM employee WHERE emp_id = %(emp_id)s"
+    cursor = db_conn.cursor()
+
+    try:
+        cursor.execute(select_emp,{'emp_id':int(emp_id)})
+        for result in cursor:
+            print(result)
+            
+    except Exception as e:
+        return str(e)
+        
+    finally:
+        cursor.close()
+    
+
+    return render_template("searchEmployee.html",result=result)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
