@@ -148,7 +148,25 @@ def deleteEmp():
         cursor1.close()
 
     return render_template("deleteOutput.html",name=emp_name)
-  
+
+def editEmp():
+    emp_id = request.form['emp_id']
+    select_emp = "SELECT * FROM employee WHERE emp_id = %(emp_id)s"
+    cursor = db_conn.cursor()
+    try:
+        cursor.execute(select_emp, {'emp_id': int(emp_id)})
+        for result in cursor:
+            print(result)
+        db_conn.commit()
+    except Exception as e:
+        db_conn.rollback()
+        return str(e)
+
+    finally:
+        cursor.close()
+        
+
+    return render_template("editEmployee.html",result=result)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
