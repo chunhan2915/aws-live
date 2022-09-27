@@ -168,5 +168,35 @@ def editEmp():
 
     return render_template("editEmployee.html",result=result)
 
+@app.route("/editemp",methods=['POST','GET'])
+def EditEmp():
+
+    emp_id = request.form['emp_id']
+    first_name = request.form['first_name']
+    last_name = request.form['last_name']
+    email = request.form['email']
+    phone = request.form['phone']
+    position = request.form['position']
+    department = request.form['department']
+    salary = request.form['salary']
+
+    update_sql = "UPDATE employee set first_name =  %(first_name)s , last_name = %(last_name)s , email =  %(email)s, phone =  %(phone)s , position = %(position)s , department =  %(department)s, salary =  %(salary)s WHERE emp_id =  %(emp_id)s"
+    cursor = db_conn.cursor()
+
+    try:
+
+        cursor.execute(update_sql, ( first_name, last_name, email, phone,position,department,salary,emp_id))
+        db_conn.commit()
+
+    except Exception as e:
+        return str(e)
+
+    finally:
+        cursor.close()
+
+    print("all modification done...")
+    return render_template('index.html',alert=True,edit=True)
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)

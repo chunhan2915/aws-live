@@ -105,6 +105,16 @@
                     </div>
                 </div>
             </div>
+            {% if alert == True && edit == True%}
+                <script>
+                    alert("Edit Successful")
+                </script>
+            {% endif %}
+            {% if alert == True && delete == True%}
+                <script>
+                    alert("Delete Successful")
+                </script>
+            {% endif %}
             <!-- Blank End -->
 
 
