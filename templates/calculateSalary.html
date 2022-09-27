@@ -100,8 +100,46 @@
             <!-- Blank Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
-                    <div class="col-md-6 text-center">
-                        <h3>This is blank page</h3>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Employee Details:</h6>
+                            <table class="table" class="align-left">
+                                <tbody>
+                                    <tr>
+                                        <th scope="col">First Name</th>
+                                        <th scope="row">{{result[1]}}</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Last Name</th>
+                                        <th scope="row">{{result[2]}}</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Position</th>
+                                        <th scope="row">{{result[5]}}</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Department</th>
+                                        <th scope="row">{{result[6]}}</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Salary</th>
+                                        <th scope="row">{{result[7]}}</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">EPF ammount (Employee) (11%) </th>
+                                        <th scope="row">{{employee}}</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">EPF ammount (Employer) (13%) </th>
+                                        <th scope="row">{{employer}}</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col"><mark>Net Salary</mark></th>
+                                        <th scope="row"><mark>{{net}}</mark></th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
