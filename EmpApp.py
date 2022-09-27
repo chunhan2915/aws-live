@@ -105,8 +105,9 @@ def SearchEmp():
     cursor = db_conn.cursor()
 
     try:
-        get = cursor.execute(select_emp,{'emp_id':int(emp_id)})
-        if get != 1:
+        cursor.execute(select_emp,{'emp_id':int(emp_id)})
+        count = cursor.rowcount
+        if count == 0:
             return "ID not found in database"
         for result in cursor:
             print(result)
