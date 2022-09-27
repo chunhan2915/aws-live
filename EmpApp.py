@@ -216,6 +216,34 @@ def EditEmp():
     print("all modification done...")
     return render_template('index.html',alert=True,edit=True)
 
+@app.route("/calculate" ,methods=['POST','GET'])
+def calculateNetSalary():
+    emp_id = request.form['emp_id']
+    select_emp = "SELECT * FROM employee WHERE emp_id = %(emp_id)s"
+    cursor = db_conn.cursor()
+
+    try:
+        cursor.execute(select_emp, {'emp_id': int(emp_id)})
+        for result in cursor:
+            print(result)
+        
+        if(int(result[7])!= 0 ):
+            employee = int(result[7]) * 11 / 100
+            employer = int(result[7]) * 13 / 100
+            net = int(result[7]) - employee
+        else:
+            employee = 0
+            employer = 0
+            net = 0
+
+    except Exception as e:
+        db_conn.rollback()
+        return str(e)  
+
+    finally:
+        cursor.close()    
+        return render_template("calculateSalary.html",employee=employee,employer=employer,net=net)  
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
