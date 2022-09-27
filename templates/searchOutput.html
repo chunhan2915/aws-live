@@ -139,12 +139,14 @@
                                     </table>
                                 </div>
                             </div>
-
+                            <form action="/edit" autocomplete="on" method = "POST" enctype="multipart/form-data">
                             <!-- edit function add in-->
                             <button onclick="editEmp()" name="emp_id" value="{{result[0]}}" class="btn btn-primary">Edit</button>
-
+                            </form> 
+                            <form action="/delete" autocomplete="on" method = "POST" enctype="multipart/form-data">
                             <!-- delete function add in-->
                             <button onclick="deleteEmp()" name="emp_id" value="{{result[0]}}" class="btn btn-primary">Delete</button>
+                            </form>
                         </form>
                     </div>
                 </div>
