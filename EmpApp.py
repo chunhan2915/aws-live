@@ -1,4 +1,5 @@
 from crypt import methods
+from select import select
 from sqlite3 import Cursor
 from flask import Flask, render_template, request
 from pymysql import connections
@@ -106,6 +107,32 @@ def SearchEmp():
         cursor.close()
 
     return render_template("searchOutput.html",result=result)
+
+@app.route("/emp",methods=['POST','GET'])
+def deleteEmp():
+
+    emp_id = request.form['emp_id']
+    select_emp = "SELECT * FROM employee WHERE emp_id = %(emp_id)s"
+    delete_emp = "DELETE FROM employee WHERE emp_id = %(emp_id)s"
+    cursor = db_conn.cursor()
+
+    try:
+
+        cursor.execute(select,{'emp_id':int(emp_id)})
+        for result in cursor:
+            print(result)
+        emp_name = "" + result[1]  + " " + result[2]
+
+        try:
+            cursor.execute(delete_emp,{'emp_id':int(emp_id)})
+
+        except Exception as e:
+            return str(e)
+
+    finally:
+        cursor.close()
+
+    return render_template("deleteOutput.html",name=emp_name)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
