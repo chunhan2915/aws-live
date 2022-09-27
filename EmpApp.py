@@ -118,7 +118,7 @@ def deleteEmp():
 
     try:
 
-        cursor.execute(select,{'emp_id':int(emp_id)})
+        cursor.execute(select_emp,{'emp_id':int(emp_id)})
         for result in cursor:
             print(result)
         emp_name = "" + result[1]  + " " + result[2]
