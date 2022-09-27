@@ -183,7 +183,7 @@ def EditEmp():
     position = request.form['position']
     department = request.form['department']
     salary = request.form['salary']
-    emp_image_file = request.form['emp_image_file']
+    emp_image_file = request.files['emp_image_file']
 
     update_sql = "UPDATE employee set first_name =  %(first_name)s , last_name = %(last_name)s , email =  %(email)s, phone =  %(phone)s , position = %(position)s , department =  %(department)s, salary =  %(salary)s WHERE emp_id =  %(emp_id)s"
     cursor = db_conn.cursor()
