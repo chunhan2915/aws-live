@@ -34,7 +34,7 @@ def addEmp():
 
 
 @app.route("/searchemp/", methods=['GET', 'POST'])
-def addEmp():
+def searchEmp():
     return render_template('searchEmployee.html')
 
 
