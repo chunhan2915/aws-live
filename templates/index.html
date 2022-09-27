@@ -105,16 +105,19 @@
                     </div>
                 </div>
             </div>
-            {% if alert == True && edit == True%}
+            {% if alert == True%}
+                {%if edit == True%}
                 <script>
                     alert("Edit Successful")
                 </script>
-            {% endif %}
-            {% if alert == True && delete == True%}
+                {% endif %}
+                {% delete == True%}
                 <script>
                     alert("Delete Successful")
                 </script>
+                {% endif %}
             {% endif %}
+            
             <!-- Blank End -->
 
 
