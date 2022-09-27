@@ -41,7 +41,7 @@ def searchEmp():
 @app.route("/displayemp/", methods=['GET', 'POST'])
 def displayEmp():
     select_emp = "SELECT * FROM employee"
-    cursor = db_conn.cursor(pymysql.cursors.DictCursor)
+    cursor = db_conn.cursor()
     cursor.execute(select_emp)
     data = cursor.fetchall()
     cursor.close()
