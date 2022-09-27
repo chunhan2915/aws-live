@@ -98,12 +98,63 @@
 
             <!-- Blank Start -->
             <div class="container-fluid pt-4 px-4">
-                <div class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
-                    <div class="col-md-6 text-center">
-                        <h3>This is blank page</h3>
-                    </div>
-                </div>
-            </div>
+                <div class="row mh-100 bg-light rounded align-items-center justify-content-center mx-0">
+                    <div class="col-sm-12 col-xl-6">
+                        <form action="/addemp" autocomplete="on" method = "POST" enctype="multipart/form-data">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Search Employee Details</h6>
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" name="emp_id" id="floatingId"
+                                    placeholder="0000000">
+                                <label for="floatingId">Employee ID</label>
+                            </div>
+                            
+                            <!-- Search function add in-->
+                            <button type="submit" class="btn btn-primary">Search</button>
+
+                            <div class="col-sm-12 col-xl-6">
+                                <div class="bg-light rounded h-100 p-4">
+                                    <h6 class="mb-4">Employee Details:</h6>
+                                    <table class="table" class="align-left">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="col">First Name</th>
+                                                <th scope="row">Alvin</th>
+                                            </tr>
+                                            <tr>
+                                                <th scope="col">Last Name</th>
+                                                <th scope="row">Lee</th>
+                                            </tr>
+                                            <tr>
+                                                <th scope="col">Email Address</th>
+                                                <th scope="row">alvinlee123@gmail.com</th>
+                                            </tr>
+                                            <tr>
+                                                <th scope="col">Phone Number</th>
+                                                <th scope="row">0123456789</th>
+                                            </tr>
+                                            <tr>
+                                                <th scope="col">Position</th>
+                                                <th scope="row">Manager</th>
+                                            </tr>
+                                            <tr>
+                                                <th scope="col">Department</th>
+                                                <th scope="row">IT department</th>
+                                            </tr>
+                                            <tr>
+                                                <th scope="col">Salary</th>
+                                                <th scope="row">5000</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- edit function add in-->
+                            <button type="submit" class="btn btn-primary">Edit</button>
+
+                            <!-- delete function add in-->
+                            <button type="submit" class="btn btn-primary">Delete</button>
             <!-- Blank End -->
 
 
