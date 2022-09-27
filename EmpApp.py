@@ -32,6 +32,7 @@ def home():
 def addEmp():
     return render_template('addEmployee.html')
 
+
 @app.route("/searchemp/", methods=['GET', 'POST'])
 def addEmp():
     return render_template('searchEmployee.html')
@@ -103,7 +104,6 @@ def SearchEmp():
         
     finally:
         cursor.close()
-    
 
     return render_template("searchEmployee.html",result=result)
 
