@@ -147,7 +147,7 @@ def deleteEmp():
         cursor.close()
         cursor1.close()
 
-    return render_template("deleteOutput.html",name=emp_name)
+    return render_template("deleteOutput.html",name=emp_name,alert=True,delete=True)
 
 @app.route("/edit",methods=['POST','GET'])
 def editEmp():
