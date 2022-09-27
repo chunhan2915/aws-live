@@ -101,58 +101,53 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="row mh-100 bg-light rounded align-items-center justify-content-center mx-0">
                     <div class="col-sm-12 col-xl-6">
-                        
-                            <div class="col-sm-12 col-xl-6">
-                                <div class="bg-light rounded h-100 p-4">
-                                    <h6 class="mb-4">Employee Details:</h6>
-                                    <table class="table" class="align-left">
-                                        <tbody>
-                                            <tr>
-                                                <th scope="col">First Name</th>
-                                                <th scope="row">{{result[1]}}</th>
-                                            </tr>
-                                            <tr>
-                                                <th scope="col">Last Name</th>
-                                                <th scope="row">{{result[2]}}</th>
-                                            </tr>
-                                            <tr>
-                                                <th scope="col">Email Address</th>
-                                                <th scope="row">{{result[3]}}</th>
-                                            </tr>
-                                            <tr>
-                                                <th scope="col">Phone Number</th>
-                                                <th scope="row">{{result[4]}}</th>
-                                            </tr>
-                                            <tr>
-                                                <th scope="col">Position</th>
-                                                <th scope="row">{{result[5]}}</th>
-                                            </tr>
-                                            <tr>
-                                                <th scope="col">Department</th>
-                                                <th scope="row">{{result[6]}}</th>
-                                            </tr>
-                                            <tr>
-                                                <th scope="col">Salary</th>
-                                                <th scope="row">{{result[7]}}</th>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <form action="/edit" autocomplete="on" method = "POST" enctype="multipart/form-data">
-                            <!-- edit function add in-->
-                            <button onclick="editEmp()" name="emp_id" value="{{result[0]}}" class="btn btn-primary">Edit</button>
-                            </form> 
-                            <form action="/delete" autocomplete="on" method = "POST" enctype="multipart/form-data">
-                            <!-- delete function add in-->
-                            <button onclick="deleteEmp()" name="emp_id" value="{{result[0]}}" class="btn btn-primary">Delete</button>
-                            </form>
-                        
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Employee Details:</h6>
+                            <table class="table" class="align-left">
+                                <tbody>
+                                    <tr>
+                                        <th scope="col">First Name</th>
+                                        <th scope="row">{{result[1]}}</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Last Name</th>
+                                        <th scope="row">{{result[2]}}</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Email Address</th>
+                                        <th scope="row">{{result[3]}}</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Phone Number</th>
+                                        <th scope="row">{{result[4]}}</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Position</th>
+                                        <th scope="row">{{result[5]}}</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Department</th>
+                                        <th scope="row">{{result[6]}}</th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Salary</th>
+                                        <th scope="row">{{result[7]}}</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
+                    <form action="/edit" autocomplete="on" method = "POST" enctype="multipart/form-data">
+                        <!-- edit function add in-->
+                        <button onclick="editEmp()" name="emp_id" value="{{result[0]}}" class="btn btn-primary">Edit</button>
+                    </form> 
+                    <form action="/delete" autocomplete="on" method = "POST" enctype="multipart/form-data">
+                        <!-- delete function add in-->
+                        <button onclick="deleteEmp()" name="emp_id" value="{{result[0]}}" class="btn btn-primary">Delete</button>
+                    </form>
                 </div>
             </div>
-        </div>
-    </div>
+
             <!-- Blank End -->
 
 
