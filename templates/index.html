@@ -107,12 +107,12 @@
             </div>
             {% if alert == True%}
                 {%if edit == True%}
-                <script>
-                    alert("Edit Successful")
-                </script>
+                <div class="alert alert-info" role="alert">
+                    Edit Successful
+                </div>
                 {%elif delete == True%}
                 <script>
-                    alert("{{name}} Delete Successful")
+                    alert("{{name}}Delete Successful")
                 </script>
                 {% endif %}
             {% endif %}
