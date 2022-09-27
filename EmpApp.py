@@ -38,6 +38,15 @@ def addEmp():
 def searchEmp():
     return render_template('searchEmployee.html')
 
+@app.route("/displayemp/", methods=['GET', 'POST'])
+def displayEmp():
+    select_emp = "SELECT * FROM employee"
+    cursor = db_conn.cursor()
+    cursor.execute(select_emp)
+    data = cursor.fetchall()
+    cursor.close()
+    return render_template('DisplayAllEmployee.html', employee=data)
+
 
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
@@ -133,14 +142,7 @@ def deleteEmp():
         cursor1.close()
 
     return render_template("deleteOutput.html",name=emp_name)
-
-def displayEmp():
-    select_emp = "SELECT * FROM employee"
-    cursor = db_conn.cursor()
-    cursor.execute(select_emp)
-    data = cursor.fetchall()
-    cursor.close()
-    return render_template('DisplayAllEmployee.html', employee=data)
+  
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
