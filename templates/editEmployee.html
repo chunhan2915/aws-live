@@ -102,43 +102,43 @@
                 <div class="row mh-100 bg-light rounded align-items-center justify-content-center mx-0">
                     <div class="col-sm-12 col-xl-6">
                         <form action="/editemp" autocomplete="on" method = "POST" enctype="multipart/form-data">
-                        <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">Edit Employee Details</h6>
-                            <div class="mb-3">
+                            <div class="bg-light rounded h-100 p-4">
+                                <h6 class="mb-4">Edit Employee Details</h6>
+                                <div class="mb-3">
                                 <label class="form-label">Employee ID:</label>
                                 <label>{{result[0]}}</label>
                                 <input hidden="true" value="{{result[0]}}" name="emp_id">
-                            </div>
-                            <div class="mb-3">
+                                </div>
+                                <div class="mb-3">
                                 <label for="floatingFirst">First Name</label>
                                 <input type="text" value="{{result[1]}}" class="form-control" name="first_name" id="floatingFirst"
                                     placeholder="XXX XXXX">
-                            </div>
-                            <div class="mb-3">
+                                </div>
+                                <div class="mb-3">
                                 <label for="floatingLast">Last Name</label>
                                 <input type="text" value="{{result[2]}}" class="form-control" name="last_name" id="floatingLast"
                                     placeholder="XXX">
                                 
-                            </div>
-                            <div class="mb-3">
+                                </div>
+                                <div class="mb-3">
                                 <label for="floatingEmail">Email address</label>
                                 <input type="email" value="{{result[3]}}" class="form-control" name="email" id="floatingEmail"
                                     placeholder="name@example.com">
     
-                            </div>
-                            <div class="mb-3">
+                                </div>
+                                <div class="mb-3">
                                 <label for="floatingPhone">Phone Number</label>
                                 <input type="text" value="{{result[4]}}" class="form-control" name="phone" id="floatingPhone"
                                     placeholder="000-0000000">
                                 
-                            </div>
-                            <div class="mb-3">
+                                </div>
+                                <div class="mb-3">
                                 <label for="floatingPosition">Position</label>
                                 <input type="text" value="{{result[5]}}" class="form-control" name="position" id="floatingPosition"
                                     placeholder="Manager">
                                 
-                            </div>
-                            <div class="mb-3">
+                                </div>
+                                <div class="mb-3">
                                 <label for="floatingDepartment">Department</label>
                                 <select class="form-select" value="{{result[6]}}" name="department" id="floatingDepartment"
                                     aria-label="Floating label select example">
@@ -148,24 +148,22 @@
                                     <option value="Marketing">Marketing</option>
                                 </select>
                                 
-                            </div>
-                            <div class="mb-3">
+                                </div>
+                                <div class="mb-3">
                                 <label for="floatingPosition">Salary</label>
                                 <input type="number" value="{{result[7]}}" class="form-control" name="salary" id="floatingSalary"
                                     placeholder="0000">
-                            </div>
-                            <div class="mb-3">
+                                </div>
+                                <div class="mb-3">
                                 <label>Image</label>
                                 <img src={{url}}>
                                 
-                            </div>
-                            <div class="mb-3">
+                                </div>
+                                <div class="mb-3">
                                 <input class="form-control" type="file" name="emp_image_file" id="formFile">
+                                </div>
+                                <button type="submit" value="{{result[0]}}" class="btn btn-primary">Submit</button>
                             </div>
-                            
-
-                            <button type="submit" value="{{result[0]}}" class="btn btn-primary">Submit</button>
-                        </div>
                         </form>
                     </div>
                 </div>
