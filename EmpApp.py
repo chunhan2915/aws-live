@@ -123,7 +123,7 @@ def SearchEmp():
         return render_template("searchOutput.html",result=result)
     
 
-@app.route("/emp",methods=['POST','GET'])
+@app.route("/delete",methods=['POST','GET'])
 def deleteEmp():
 
     emp_id = request.form['emp_id']
@@ -149,6 +149,7 @@ def deleteEmp():
 
     return render_template("deleteOutput.html",name=emp_name)
 
+@app.route("/edit",methods=['POST','GET'])
 def editEmp():
     emp_id = request.form['emp_id']
     select_emp = "SELECT * FROM employee WHERE emp_id = %(emp_id)s"
@@ -164,8 +165,6 @@ def editEmp():
 
     finally:
         cursor.close()
-        
-
     return render_template("editEmployee.html",result=result)
 
 @app.route("/editemp",methods=['POST','GET'])
