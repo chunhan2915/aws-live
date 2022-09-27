@@ -7,7 +7,7 @@
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
-    
+
     
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,7 +44,7 @@
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
                 <a href="/" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>DASHMIN</h3>
+                    <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>Employee Management</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
@@ -52,7 +52,7 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">John Doe</h6>
+                        <h6 class="mb-0">Jhon Doe</h6>
                         <span>Admin</span>
                     </div>
                 </div>
@@ -61,12 +61,11 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Employee</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="/addemp/" class="dropdown-item">Add</a>
-                            <a href="/searchemp/" class="dropdown-item">Search</a>
-                            <a href="/displayemp/" class="dropdown-item">Display</a>
+                            <a href="addEmployee.html" class="dropdown-item">Add</a>
+                            <a href="searchEmployee.html" class="dropdown-item">Search</a>
                         </div>
                     </div>
-                    <a href="/calculate/" class="nav-item nav-link"><i class="fa fa-calculator me-2"></i></i>Calculate Salary</a>
+                    <a href="calculateSalary.html" class="nav-item nav-link"><i class="fa fa-calculator me-2"></i></i>Calculate Salary</a>
                 </div>
             </nav>
         </div>
@@ -97,14 +96,65 @@
             </nav>
             <!-- Navbar End -->
 
-
             <!-- Blank Start -->
             <div class="container-fluid pt-4 px-4">
-                <div class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
-                    <div class="col-md-6 text-center">
-                        <h1>EMPLOYEE SUCCESSFUL DELETE</h1><br>
-                        <h2>Following Employee has been DELETE from the database</h2>
-                        <h1>{{ name }}</h1><br>
+                <div class="row mh-100 bg-light rounded align-items-center justify-content-center mx-0">
+                    <div class="col-sm-12 col-xl-6">
+                        <form action="/addemp" autocomplete="on" method = "POST" enctype="multipart/form-data">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">New Employee Details</h6>
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" name="emp_id" id="floatingId"
+                                    placeholder="0000000">
+                                <label for="floatingId">Employee ID</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" name="first_name" id="floatingFirst"
+                                    placeholder="XXX XXXX">
+                                <label for="floatingFirst">First Name</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" name="last_name" id="floatingLast"
+                                    placeholder="XXX">
+                                <label for="floatingLast">Last Name</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" name="email" id="floatingEmail"
+                                    placeholder="name@example.com">
+                                <label for="floatingEmail">Email address</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" name="phone" id="floatingPhone"
+                                    placeholder="000-0000000">
+                                <label for="floatingPhone">Phone Number</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" name="position" id="floatingPosition"
+                                    placeholder="Manager">
+                                <label for="floatingPosition">Position</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <select class="form-select" name="department" id="floatingDepartment"
+                                    aria-label="Floating label select example">
+                                    <option selected>Department</option>
+                                    <option value="IT">IT</option>
+                                    <option value="Sales">Sales</option>
+                                    <option value="Marketing">Marketing</option>
+                                </select>
+                                <label for="floatingDepartment">Department</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" name="salary" id="floatingSalary"
+                                    placeholder="0000">
+                                <label for="floatingPosition">Salary</label>
+                            </div>
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label">Image</label>
+                                <input class="form-control" type="file" name="emp_image_file" id="formFile">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
