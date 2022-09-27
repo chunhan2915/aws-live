@@ -115,6 +115,7 @@ def deleteEmp():
     select_emp = "SELECT * FROM employee WHERE emp_id = %(emp_id)s"
     delete_emp = "DELETE FROM employee WHERE emp_id = %(emp_id)s"
     cursor = db_conn.cursor()
+    cursor1 = db_conn.cursor()
 
     try:
 
@@ -124,13 +125,14 @@ def deleteEmp():
         emp_name = "" + result[1]  + " " + result[2]
 
         try:
-            cursor.execute(delete_emp,{'emp_id':int(emp_id)})
+            cursor1.execute(delete_emp,{'emp_id':int(emp_id)})
 
         except Exception as e:
             return str(e)
 
     finally:
         cursor.close()
+        cursor1.close()
 
     return render_template("deleteOutput.html",name=emp_name)
 
