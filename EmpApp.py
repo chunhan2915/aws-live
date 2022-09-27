@@ -243,7 +243,7 @@ def calculateNetSalary():
             employee = 0
             employer = 0
             net = 0  
-        return render_template("calculateSalary.html",employee=employee,employer=employer,net=net)  
+        return render_template("calculateSalary.html",result=result,employee=employee,employer=employer,net=net)  
 
 
 if __name__ == '__main__':
