@@ -126,18 +126,46 @@
                                         <th scope="row">{{result[7]}}</th>
                                     </tr>
                                     <tr>
-                                        <th scope="col">EPF ammount (Employee) (11%) </th>
-                                        <th scope="row">{{employee}}</th>
-                                    </tr>
-                                    <tr>
-                                        <th scope="col">EPF ammount (Employer) (13%) </th>
-                                        <th scope="row">{{employer}}</th>
-                                    </tr>
-                                    <tr>
-                                        <th scope="col"><mark>Net Salary</mark></th>
-                                        <th scope="row"><mark>{{net}}</mark></th>
+                                        <th scope="col"><strong><mark>Net Salary</mark></strong></th>
+                                        <th scope="row"><strong><mark>{{net}}</mark></strong></th>
                                     </tr>
                                 </tbody>
+                            </table>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Employer</th>
+                                        <th scope="col">Employee</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">EPF:</th>
+                                        <td>{{employerEpf}}</td>
+                                        <td>{{employeeEpf}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">SOCSO:</th>
+                                        <td>{{employerSocso}}</td>
+                                        <td>{{employeeSocso}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">EIS:</th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table>
+                                <tr>
+                                    <th scope="col">EPF ammount (Employee) (11%) </th>
+                                    <th scope="row">{{employee}}</th>
+                                </tr>
+                                <tr>
+                                    <th scope="col">EPF ammount (Employer) (13%) </th>
+                                    <th scope="row">{{employer}}</th>
+                                </tr>
                             </table>
                         </div>
                     </div>
