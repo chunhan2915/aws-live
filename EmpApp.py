@@ -238,13 +238,22 @@ def calculateNetSalary():
         if(int(result[7])!= 0 ):
             employeeEpf = int(result[7]) * 11 / 100
             employerEpf = int(result[7]) * 13 / 100
-            net = int(result[7]) - employee
+            employeeSocso,employerSocso = calculateSocso(int(result[7]))
+            net = int(result[7]) - employeeEpf - employeeSocso
         else:
-            employee = 0
-            employer = 0
+            employeeEpf = 0
+            employerEpf = 0
             net = 0  
-        return render_template("calculateSalary.html",result=result,employee=employeeEpf,employer=employerEpf,net=net)  
+        return render_template("calculateSalary.html",result=result,employeeEpf=employeeEpf,employeEpf=employerEpf,net=net,employeeSocso=employeeSocso,employerSocso=employerSocso) 
 
+def calculateSocso(result):
+    if(result > 4900):
+        employerSocso = 86.65
+        employeeSocso = 24.75
+    else:
+        employerSocso = 0.40
+        employeeSocso = 0.10
+    return employeeSocso,employerSocso
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
