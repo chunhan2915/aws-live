@@ -255,6 +255,9 @@ def calculateSocso(result):
     if(result > 4900):
         employerSocso = 86.65
         employeeSocso = 24.75
+    elif(result > 4800):
+        employerSocso = 84.85
+        employeeSocso = 24.25
     else:
         employerSocso = 0.40
         employeeSocso = 0.10
