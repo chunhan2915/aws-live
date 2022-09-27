@@ -236,14 +236,14 @@ def calculateNetSalary():
     finally:
         cursor.close()  
         if(int(result[7])!= 0 ):
-            employee = int(result[7]) * 11 / 100
-            employer = int(result[7]) * 13 / 100
+            employeeEpf = int(result[7]) * 11 / 100
+            employerEpf = int(result[7]) * 13 / 100
             net = int(result[7]) - employee
         else:
             employee = 0
             employer = 0
             net = 0  
-        return render_template("calculateSalary.html",result=result,employee=employee,employer=employer,net=net)  
+        return render_template("calculateSalary.html",result=result,employee=employeeEpf,employer=employerEpf,net=net)  
 
 
 if __name__ == '__main__':
