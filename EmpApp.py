@@ -105,7 +105,9 @@ def SearchEmp():
     cursor = db_conn.cursor()
 
     try:
-        cursor.execute(select_emp,{'emp_id':int(emp_id)})
+        get = cursor.execute(select_emp,{'emp_id':int(emp_id)})
+        if get != 1:
+            return "ID not found in database"
         for result in cursor:
             print(result)
             
@@ -115,7 +117,8 @@ def SearchEmp():
     finally:
         cursor.close()
 
-    return render_template("searchOutput.html",result=result)
+        return render_template("searchOutput.html",result=result)
+    
 
 @app.route("/emp",methods=['POST','GET'])
 def deleteEmp():
