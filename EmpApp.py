@@ -107,8 +107,7 @@ def SearchEmp():
     try:
         cursor.execute(select_emp,{'emp_id':int(emp_id)})
         count = cursor.rowcount
-        if count == 0:
-            return "ID not found in database"
+       
         for result in cursor:
             print(result)
             
@@ -118,6 +117,9 @@ def SearchEmp():
     finally:
         cursor.close()
 
+    if count == 0:
+            return "ID not found in database"
+    else:
         return render_template("searchOutput.html",result=result)
     
 
