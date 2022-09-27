@@ -118,7 +118,7 @@ def SearchEmp():
         cursor.close()
 
     if count == 0:
-            return "ID not found in database"
+        return render_template('searchEmployee.html', alert=True)
     else:
         return render_template("searchOutput.html",result=result)
     
