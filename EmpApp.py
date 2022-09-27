@@ -155,7 +155,7 @@ def editEmp():
     select_emp = "SELECT * FROM employee WHERE emp_id = %(emp_id)s"
     cursor = db_conn.cursor()
 
-    key = "tanchunhan-bucket/emp-id-" + str(emp_id) + "_image_file.png"
+    key = "tanchunhan-bucket.s3.amazonaws.com/emp-id-" + str(emp_id) + "_image_file.png"
 
     url = "https://%s.s3.amazonaws.com/%s" % (custombucket, key)
     try:
