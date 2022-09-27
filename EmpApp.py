@@ -227,6 +227,14 @@ def calculateNetSalary():
         for result in cursor:
             print(result)
         
+       
+
+    except Exception as e:
+        db_conn.rollback()
+        return str(e)  
+
+    finally:
+        cursor.close()  
         if(int(result[7])!= 0 ):
             employee = int(result[7]) * 11 / 100
             employer = int(result[7]) * 13 / 100
@@ -234,14 +242,7 @@ def calculateNetSalary():
         else:
             employee = 0
             employer = 0
-            net = 0
-
-    except Exception as e:
-        db_conn.rollback()
-        return str(e)  
-
-    finally:
-        cursor.close()    
+            net = 0  
         return render_template("calculateSalary.html",employee=employee,employer=employer,net=net)  
 
 
