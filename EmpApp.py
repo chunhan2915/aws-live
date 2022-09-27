@@ -118,23 +118,29 @@ def deleteEmp():
     cursor1 = db_conn.cursor()
 
     try:
-
-        cursor.execute(select_emp,{'emp_id':int(emp_id)})
+        cursor.execute(select_emp, {'emp_id': int(emp_id)})
+        cursor1.execute(delete_emp, {'emp_id': int(emp_id)})
         for result in cursor:
             print(result)
-        emp_name = "" + result[1]  + " " + result[2]
-
-        try:
-            cursor1.execute(delete_emp,{'emp_id':int(emp_id)})
-
-        except Exception as e:
-            return str(e)
+        db_conn.commit()
+        emp_name = "" + result[1] + " " + result[2]
+    except Exception as e:
+        db_conn.rollback()
+        return str(e)
 
     finally:
         cursor.close()
         cursor1.close()
 
     return render_template("deleteOutput.html",name=emp_name)
+
+def displayEmp():
+    select_emp = "SELECT * FROM employee"
+    cursor = db_conn.cursor()
+    cursor.execute(select_emp)
+    data = cursor.fetchall()
+    cursor.close()
+    return render_template('DisplayAllEmployee.html', employee=data)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
