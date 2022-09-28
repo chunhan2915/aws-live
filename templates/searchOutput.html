@@ -138,42 +138,42 @@
                     </div>
                 </div>
                 <div class="row mh-100 bg-light rounded align-items-center justify-content-center mx-0">
-                    <div class="col-sm-12 col-xl-3">
+                    <div class="col-sm-12 col-xl-2">
                         <form action="/edit" autocomplete="on" method = "POST" enctype="multipart/form-data">
                             <!-- edit function add in-->
-                            <button type="submit" name="emp_id" value="{{result[0]}}" class="btn btn-primary">Edit</button>
+                            <button type="submit" name="emp_id" value="{{result[0]}}" class="btn btn-primary w-100 ">Edit</button>
                         </form> 
                     </div>
-                    <div class="col-sm-12 col-xl-3">
+                    <div class="col-sm-12 col-xl-2">
                         <form action="/delete" autocomplete="on" method = "POST" enctype="multipart/form-data">
                             <!-- delete function add in-->
-                            <button type="submit"  name="emp_id" value="{{result[0]}}" class="btn btn-primary">Delete</button>
+                            <button type="submit"  name="emp_id" value="{{result[0]}}" class="btn btn-primary w-100 ">Delete</button>
                         </form>
                     </div>
-                    <div class="col-sm-12 col-xl-3">
+                    <div class="col-sm-12 col-xl-2">
                         <form action="/calculate" autocomplete="on" method = "POST" enctype="multipart/form-data">
                             <!-- delete function add in-->
-                            <button type="submit" name="emp_id" value="{{result[0]}}" class="btn btn-primary">Calculate Salary</button>
+                            <button type="submit" name="emp_id" value="{{result[0]}}" class="btn btn-primary w-100 ">Calculate Salary</button>
                         </form>
                     </div>
-                    <div class="col-sm-12 col-xl-3">
+                    <div class="col-sm-12 col-xl-2">
                         <form action="/addLeave/" autocomplete="on" method = "POST" enctype="multipart/form-data">
                             <!-- delete function add in-->
-                            <button type="submit" name="emp_id" value="{{result[0]}}" class="btn btn-primary">Add Leave</button>
+                            <button type="submit" name="emp_id" value="{{result[0]}}" class="btn btn-primary w-100 ">Add Leave</button>
                         </form>
                     </div>
-                    {%if result[8] == "NULL"%}
-                    <div class="col-sm-12 col-xl-3">
+                    {%if result[8] == ""%}
+                    <div class="col-sm-12 col-xl-2">
                         <form action="/checkInAttendance/" autocomplete="on" method = "POST" enctype="multipart/form-data">
                             <!-- delete function add in-->
-                            <button type="submit" name="emp_id" value="{{result[0]}}" class="btn btn-primary">CheckIn</button>
+                            <button type="submit" name="emp_id" value="{{result[0]}}" class="btn btn-primary w-100 ">CheckIn</button>
                         </form>
                     </div>
                     {%else%}
                     <div class="col-sm-12 col-xl-3">
                         <form action="/checkOutAttendance/" autocomplete="on" method = "POST" enctype="multipart/form-data">
                             <!-- delete function add in-->
-                            <button type="submit" name="emp_id" value="{{result[0]}}" class="btn btn-primary">CheckOut</button>
+                            <button type="submit" name="emp_id" value="{{result[0]}}" class="btn btn-primary w-100 ">CheckOut</button>
                         </form>
                     </div>
                     {%endif%}
