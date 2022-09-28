@@ -166,14 +166,14 @@
                     <div class="col-sm-12 col-xl-2">
                         <form action="/checkInAttendance/" autocomplete="on" method = "POST" enctype="multipart/form-data">
                             <!-- delete function add in-->
-                            <button type="submit" name="emp_id" value="{{result[0]}}" class="btn btn-primary w-100 ">CheckIn</button>
+                            <button type="submit" name="emp_id" value="{{result[0]}}" class="btn btn-primary w-100 ">Check In</button>
                         </form>
                     </div>
                     {%else%}
                     <div class="col-sm-12 col-xl-2">
                         <form action="/checkOutAttendance/" autocomplete="on" method = "POST" enctype="multipart/form-data">
                             <!-- delete function add in-->
-                            <button type="submit" name="emp_id" value="{{result[0]}}" class="btn btn-primary w-100 ">CheckOut</button>
+                            <button type="submit" name="emp_id" value="{{result[0]}}" class="btn btn-primary w-100 ">Check Out</button>
                         </form>
                     </div>
                     {%endif%}
