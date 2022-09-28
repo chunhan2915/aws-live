@@ -33,16 +33,11 @@ def home():
     select_emp = "SELECT * FROM employee"
     cursor = db_conn.cursor()
     
-    try:
-        cursor.execute(select_emp)
-        count = cursor.rowcount
-        data = cursor
-     
-    except Exception as e:
-        return str(e)
+    cursor.execute(select_emp)
+    count = cursor.rowcount
+    data = cursor
+    cursor.close()
 
-    finally:
-            cursor.close()
     if count == 0:
         return render_template('index.html', noget=True,numEmployee=count)
     else:
@@ -54,16 +49,12 @@ def displayAtt():
     select_emp = "SELECT * FROM attendance"
     cursor = db_conn.cursor()
     
-    try:
-        cursor.execute(select_emp)
-        count = cursor.rowcount
-        data = cursor
+    
+    cursor.execute(select_emp)
+    count = cursor.rowcount
+    data = cursor
      
-    except Exception as e:
-        return str(e)
-
-    finally:
-            cursor.close()
+    cursor.close()
     if count == 0:
         return render_template('displayAtt.html', noget=True,numEmployee=count)
     else:
