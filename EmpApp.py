@@ -32,11 +32,16 @@ def home():
     data = cursor.fetchall()
     count = cursor.rowcount
     cursor.close()
+    alert=alert
+    edit=edit
+    delete=delete
+    add=add
+    name=name
     
     if count == 0:
-        return render_template('index.html', noget=True,numEmployee=count)
+        return render_template('index.html', noget=True,numEmployee=count,alert=alert,edit=edit,delete=delete,add=add,name=name)
     else:
-        return render_template('index.html', employee=data,noget=False,numEmployee=count)
+        return render_template('index.html', employee=data,noget=False,numEmployee=count,alert=alert,edit=edit,delete=delete,add=add,name=name)
 
 
 @app.route("/addemp/", methods=['GET', 'POST'])
@@ -162,7 +167,7 @@ def deleteEmp():
         cursor.close()
         cursor1.close()
 
-    return render_template("index.html",name=emp_name,alert=True,delete=True)
+    return render_template("/",name=emp_name,alert=True,delete=True)
 
 @app.route("/edit",methods=['POST','GET'])
 def editEmp():
@@ -230,7 +235,7 @@ def EditEmp():
         cursor.close()
 
     print("all modification done...")
-    return render_template('index.html',alert=True,edit=True,name=emp_name)
+    return render_template('/',alert=True,edit=True,name=emp_name)
 
 @app.route("/calculate" ,methods=['POST','GET'])
 def calculateNetSalary():
