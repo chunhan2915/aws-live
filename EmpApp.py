@@ -689,7 +689,7 @@ def checkOut():
     # SELECT STATEMENT TO GET DATA FROM MYSQL
     select_stmt = "SELECT checkIn FROM employee WHERE emp_id = %(emp_id)s"
     insert_statement="INSERT INTO attendance VALUES (%s,%s,%s,%s)"
-    update_stmt= "UPDATE employee SET checkIn =(%(checkIn)s) WHERE emp_id = %(emp_id)s"
+
     cursor = db_conn.cursor()
     try:
         
