@@ -32,11 +32,40 @@ def home():
     data = cursor.fetchall()
     count = cursor.rowcount
     cursor.close()
-    alert=alert
-    edit=edit
-    delete=delete
-    add=add
-    name=name
+    try:
+        edit = edit
+        if(edit):
+            alert = True
+        else:
+            edit = False
+            alert = False
+    
+    except Exception as e:
+        return str(e)
+
+    try:
+        delete = delete
+        if(delete):
+            alert = True
+        else:
+            delete = False
+            alert = False
+    
+    except Exception as e:
+        return str(e)
+
+    try:
+        add = add
+        if(add):
+            alert = True
+        else:
+            add = False
+            alert = False
+    
+    except Exception as e:
+        return str(e)
+
+    
     
     if count == 0:
         return render_template('index.html', noget=True,numEmployee=count,alert=alert,edit=edit,delete=delete,add=add,name=name)
