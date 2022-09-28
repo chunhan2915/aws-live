@@ -44,8 +44,13 @@ def displayEmp():
     cursor = db_conn.cursor()
     cursor.execute(select_emp)
     data = cursor.fetchall()
+    count = cursor.rowcount
     cursor.close()
-    return render_template('displayEmployee.html', employee=data)
+    
+    if count == 0:
+        return render_template('displayEmployee.html', employee=True)
+    else:
+        return render_template('displayEmployee.html', employee=data)
 
 
 @app.route("/addemp", methods=['POST'])
