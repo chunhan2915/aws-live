@@ -49,7 +49,7 @@ def searchEmp():
     return render_template('searchEmployee.html')
 
 @app.route("/displayleave/", methods=['GET', 'POST'])
-def displayLeave():
+def displayEmp():
     select_emp = "SELECT * FROM employee.leave"
     cursor = db_conn.cursor()
     cursor.execute(select_emp)
@@ -60,7 +60,7 @@ def displayLeave():
     if count == 0:
         return render_template('displayLeave.html', noget=True)
     else:
-        return render_template('displayLeave.html', leave=data,noget=False)
+        return render_template('displayLeave.html', employee=data,noget=False)
 
 
 @app.route("/addemp", methods=['POST'])
