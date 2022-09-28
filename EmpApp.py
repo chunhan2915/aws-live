@@ -598,7 +598,7 @@ def conv_curr(amount):
     locale.setlocale(locale.LC_ALL, 'ms_MY') 
     return locale.currency(amount)
 
-@app.route("/applyLeave",methods=['POST','GET'])
+@app.route("/addLeave",methods=['POST','GET'])
 def applyLeave():
     emp_id = request.form['emp_id']
     reason = request.form['reason']
@@ -639,7 +639,8 @@ def applyLeave():
 
     print("all modification done...")
     return render_template('index.html',alert=True,leave=True)
-@app.route("/addemp/", methods=['GET', 'POST'])
+    
+@app.route("/addLeave/", methods=['GET', 'POST'])
 def addEmp():
     emp_id = request.form['emp_id']
     return render_template('addLeave.html',emp_id=emp_id)
