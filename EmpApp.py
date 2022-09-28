@@ -641,7 +641,7 @@ def applyLeave():
     return render_template('index.html',alert=True,leave=True)
 
 @app.route("/addLeave/", methods=['GET', 'POST'])
-def addEmp():
+def addLeave():
     emp_id = request.form['emp_id']
     return render_template('addLeave.html',emp_id=emp_id)
 
