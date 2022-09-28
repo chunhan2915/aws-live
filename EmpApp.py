@@ -173,7 +173,7 @@ def deleteEmp():
             s3 = boto3.resource('s3')
             try:
                 key = "emp-id-" + str(emp_id) + "_image_file"
-                s3.delete_object(Bucket='mybucketname', Key=key)
+                s3.Bucket(custombucket).delete_object(Key=key)
                 for leaveResult in cursor1:
                     key = "emp-id-"+str(emp_id) + "_LeaveDocument_"+ leaveResult[2]
                     s3.delete_object(Bucket='mybucketname', Key=key)
