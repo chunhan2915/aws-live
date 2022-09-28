@@ -48,7 +48,27 @@ def home():
     else:
         return render_template('index.html', employee=data,noget=False,numEmployee=count)
     
+
+@app.route("/displayatt/", methods=['GET', 'POST'])
+def home():
+    select_emp = "SELECT * FROM attendance"
+    cursor = db_conn.cursor()
     
+    try:
+        cursor.execute(select_emp)
+        count = cursor.rowcount
+        data = cursor.fetchall()
+     
+    except Exception as e:
+        return str(e)
+
+    finally:
+            cursor.close()
+    if count == 0:
+        return render_template('displayAtt.html', noget=True,numEmployee=count)
+    else:
+        return render_template('displayAtt.html', employee=data,noget=False,numEmployee=count)
+       
 
 
 @app.route("/addemp/", methods=['GET', 'POST'])
