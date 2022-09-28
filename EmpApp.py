@@ -166,16 +166,22 @@ def deleteEmp():
             print(result)
         db_conn.commit()
         emp_name = "" + result[1] + " " + result[2]
+        emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file"
+        s3 = boto3.resource('s3')
+        try:
+            key = "emp-id-" + str(emp_id) + "_image_file"
+            s3.delete_object(Bucket='mybucketname', Key=key)
+        finally:
+            cursor.close()
+            cursor1.close()
+
+            return render_template("message.html",name=emp_name,alert=True,delete=True)
+
     except Exception as e:
         db_conn.rollback()
         return str(e)
 
-    finally:
-        cursor.close()
-        cursor1.close()
-
-    return render_template("message.html",name=emp_name,alert=True,delete=True)
-
+    
 @app.route("/edit",methods=['POST','GET'])
 def editEmp():
     emp_id = request.form['emp_id']
