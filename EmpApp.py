@@ -32,45 +32,11 @@ def home():
     data = cursor.fetchall()
     count = cursor.rowcount
     cursor.close()
-    alert = False
-    edit = False
-    delete = False
-    add = False
-    name = ""
-    try:
-        edit = edit
-        if(edit):
-            name = name
-            alert = True
-    
-    except Exception as e:
-        return str(e)
-
-    try:
-        delete = delete
-        if(delete):
-            name = name
-            alert = True
-        
-    
-    except Exception as e:
-        return str(e)
-
-    try:
-        add = add
-        if(add):
-            name = name
-            alert = True
-    
-    except Exception as e:
-        return str(e)
-
-    
     
     if count == 0:
-        return render_template('index.html', noget=True,numEmployee=count,alert=alert,edit=edit,delete=delete,add=add,name=name)
+        return render_template('index.html', noget=True,numEmployee=count)
     else:
-        return render_template('index.html', employee=data,noget=False,numEmployee=count,alert=alert,edit=edit,delete=delete,add=add,name=name)
+        return render_template('index.html', employee=data,noget=False,numEmployee=count)
 
 
 @app.route("/addemp/", methods=['GET', 'POST'])
@@ -94,7 +60,7 @@ def displayEmp():
     if count == 0:
         return render_template('displayLeave.html', noget=True)
     else:
-        return render_template('displayLeave.html', leave=data,noget=False)
+        return render_template('displayLeave.html', employee=data,noget=False)
 
 
 @app.route("/addemp", methods=['POST'])
@@ -196,7 +162,7 @@ def deleteEmp():
         cursor.close()
         cursor1.close()
 
-    return render_template("/",name=emp_name,alert=True,delete=True)
+    return render_template("index.html",name=emp_name,alert=True,delete=True)
 
 @app.route("/edit",methods=['POST','GET'])
 def editEmp():
@@ -264,7 +230,7 @@ def EditEmp():
         cursor.close()
 
     print("all modification done...")
-    return render_template('/',alert=True,edit=True,name=emp_name)
+    return render_template('index.html',alert=True,edit=True,name=emp_name)
 
 @app.route("/calculate" ,methods=['POST','GET'])
 def calculateNetSalary():

@@ -94,29 +94,6 @@
                 </div>
             </nav>
             <!-- Navbar End -->
-            {% if alert == True%}
-                {%if edit == True%}
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <i class="fa fa-exclamation-circle me-2"></i>Sussessful Update {{name}} in the database 
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                {%elif delete == True%}
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <i class="fa fa-exclamation-circle me-2"></i>Sussessful Delete {{name}} from the database
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                {%elif add == True%}
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <i class="fa fa-exclamation-circle me-2"></i>Sussessful Add {{name}} into database
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                {%elif leave == True%}
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <i class="fa fa-exclamation-circle me-2"></i>Sussessful Add Leave Record into database
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                {% endif %}
-            {% endif %}
 
             <!-- Blank Start -->
             <div class="container-fluid pt-4 px-4">
