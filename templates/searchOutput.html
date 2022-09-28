@@ -162,6 +162,21 @@
                             <button type="submit" name="emp_id" value="{{result[0]}}" class="btn btn-primary">Add Leave</button>
                         </form>
                     </div>
+                    {%if {{result[8]}} == "NULL"}
+                    <div class="col-sm-12 col-xl-3">
+                        <form action="/checkInAttendance/" autocomplete="on" method = "POST" enctype="multipart/form-data">
+                            <!-- delete function add in-->
+                            <button type="submit" name="emp_id" value="{{result[0]}}" class="btn btn-primary">CheckIn</button>
+                        </form>
+                    </div>
+                    {%else%}
+                    <div class="col-sm-12 col-xl-3">
+                        <form action="/checkOutAttendance/" autocomplete="on" method = "POST" enctype="multipart/form-data">
+                            <!-- delete function add in-->
+                            <button type="submit" name="emp_id" value="{{result[0]}}" class="btn btn-primary">CheckOut</button>
+                        </form>
+                    </div>
+                    {%endif}
                 </div>
             </div>
 
