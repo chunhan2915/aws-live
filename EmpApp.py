@@ -34,8 +34,8 @@ def home():
     cursor = db_conn.cursor()
     try:
         cursor.execute(select_emp)
-        data = cursor.fetchall()
         count = cursor.rowcount
+        data = cursor.fetchall()
         try:
             cursor.execute(select_att)
             count1 = cursor.rowcount
@@ -47,14 +47,15 @@ def home():
                     timeTotal += total
         finally:
                 cursor.close()
+                if count == 0:
+                    return render_template('index.html', noget=True,numEmployee=count,timeTotal=timeTotal,overall=timeTotal)
+                else:
+                    overall = timeTotal / count
+                    return render_template('index.html', employee=data,noget=False,numEmployee=count,timeTotal=timeTotal,overall=overall)
     except Exception as e:
             return str(e)
     
-    if count == 0:
-        return render_template('index.html', noget=True,numEmployee=count,timeTotal=timeTotal,overall=timeTotal)
-    else:
-        overall = timeTotal / count
-        return render_template('index.html', employee=data,noget=False,numEmployee=count,timeTotal=timeTotal,overall=overall)
+    
 
 
 @app.route("/addemp/", methods=['GET', 'POST'])
@@ -277,8 +278,6 @@ def calculateNetSalary():
         for result in cursor:
             print(result)
         
-       
-
     except Exception as e:
         db_conn.rollback()
         return str(e)  
