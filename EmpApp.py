@@ -689,14 +689,13 @@ def checkOut():
     # SELECT STATEMENT TO GET DATA FROM MYSQL
     select_stmt = "SELECT checkIn FROM employee WHERE emp_id = %(emp_id)s"
     insert_statement="INSERT INTO attendance VALUES (%s,%s,%s,%s)"
-    
     cursor = db_conn.cursor()
-    LoginTime = cursor.execute(select_stmt,{'emp_id':int(emp_id)})
-    print(LoginTime)
-    CheckoutTime=datetime.now()
-    formatted_checkout = CheckoutTime.strftime('%Y-%m-%d %H:%M:%S')
-    Total_Working_Hours = CheckoutTime - LoginTime
-    print(Total_Working_Hours)
+    cursor.execute(select_stmt,{'emp_id':int(emp_id)})
+    LoginTime= cursor.fetchall()
+       
+    for row in LoginTime:
+        formatted_login = row
+        print(formatted_login[0])
     try:
         
 
