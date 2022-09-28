@@ -45,7 +45,7 @@ def home():
                 timeTotal = 0
             else:
                 for result in cursor:
-                    timeTotal += result[3]
+                    timeTotal += result[3].strftime('%H:%M:%S')
         finally:
                 cursor.close()
     except Exception as e:
