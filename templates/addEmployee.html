@@ -95,6 +95,19 @@
                 </div>
             </nav>
             <!-- Navbar End -->
+            {% if alert == True%}
+                {%if id == True%}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <i class="fa fa-exclamation-circle me-2"></i>ID already exist! Please use other ID!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {%elif fileEmpty == True%}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <i class="fa fa-exclamation-circle me-2"></i>Image file must be insert! Please upload one image!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endif %}
+            {% endif %}
 
             <!-- Blank Start -->
             <div class="container-fluid pt-4 px-4">
