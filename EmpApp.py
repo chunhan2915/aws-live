@@ -689,14 +689,15 @@ def checkOut():
     # SELECT STATEMENT TO GET DATA FROM MYSQL
     select_stmt = "SELECT checkIn FROM employee WHERE emp_id = %(emp_id)s"
     insert_statement="INSERT INTO attendance VALUES (%s,%s,%s,%s)"
-    cursor = db_conn.cursor()
-    cursor.execute(select_stmt,{'emp_id':int(emp_id)})
-    LoginTime= cursor.fetchall()
-       
-    for row in LoginTime:
-        formatted_login = row
-        print(formatted_login[0])
+    
     try:
+        cursor = db_conn.cursor()
+        cursor.execute(select_stmt,{'emp_id':int(emp_id)})
+        LoginTime= cursor.fetchall()
+       
+        for row in LoginTime:
+            formatted_login = row
+            print(formatted_login[0])
         CheckoutTime=datetime.now()
         LogininDate = datetime.strptime(formatted_login[0],'%Y-%m-%d %H:%M:%S')
         formatted_checkout = CheckoutTime.strftime('%Y-%m-%d %H:%M:%S')
@@ -720,7 +721,7 @@ def checkOut():
         cursor.close()
         
     return render_template("AttendanceOutput.html",emp_id = emp_id ,Checkout = formatted_checkout,
-     LoginTime=formatted_checkIn,TotalWorkingHours=Total_Working_Hours)
+     LoginTime=formatted_login[0],TotalWorkingHours=Total_Working_Hours)
 
 
 if __name__ == '__main__':
