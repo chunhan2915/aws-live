@@ -67,7 +67,7 @@ def displayAtt():
     if count == 0:
         return render_template('displayAtt.html', noget=True,numEmployee=count)
     else:
-        return render_template('displayAtt.html', employee=data,noget=False,numEmployee=count)
+        return render_template('displayAtt.html', att=data,noget=False,numEmployee=count)
        
 
 
