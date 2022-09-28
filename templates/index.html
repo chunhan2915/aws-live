@@ -110,6 +110,11 @@
                     <i class="fa fa-exclamation-circle me-2"></i>Sussessful Add {{name}} into database
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
+                {%elif leave == True%}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <i class="fa fa-exclamation-circle me-2"></i>Sussessful Add Leave Record into database
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
                 {% endif %}
             {% endif %}
 
