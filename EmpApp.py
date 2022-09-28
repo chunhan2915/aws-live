@@ -724,8 +724,6 @@ def checkOut():
         except Exception as e:
             return str(e)
                  
-    except Exception as e:
-        return str(e)
 
     finally:
         cursor.close()
