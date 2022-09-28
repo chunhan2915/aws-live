@@ -248,7 +248,7 @@ def calculateNetSalary():
             employeeSocso = 0
             employerSocso = 0
             net = 0  
-        return render_template("calculateSalary.html",result=result,employeeEIS=employeeEIS,employerEIS=employerEIS,employeeEpf=employeeEpf,employeEpf=employerEpf,net=net,employeeSocso=employeeSocso,employerSocso=employerSocso) 
+        return render_template("calculateSalary.html",result=result,employeeEIS=employeeEIS,employerEIS=employerEIS,employeeEpf=employeeEpf,employerEpf=employerEpf,net=net,employeeSocso=employeeSocso,employerSocso=employerSocso) 
 
 def calculateSocso(result):
     if(result > 4900):
