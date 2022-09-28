@@ -661,7 +661,7 @@ def checkIn():
     emp_id = request.form['emp_id']
 
     #UPDATE STATEMENT
-    update_stmt= "UPDATE employee SET check_in =(%(check_in)s) WHERE emp_id = %(emp_id)s"
+    update_stmt= "UPDATE employee SET checkIn =(%(checkIn)s) WHERE emp_id = %(emp_id)s"
 
     cursor = db_conn.cursor()
 
@@ -670,7 +670,7 @@ def checkIn():
     print ("Check in time:{}",formatted_login)
 
     try:
-        cursor.execute(update_stmt, { 'check_in': formatted_login ,'emp_id':int(emp_id)})
+        cursor.execute(update_stmt, { 'checkIn': formatted_login ,'emp_id':int(emp_id)})
         db_conn.commit()
         print(" Data Updated into MySQL")
 
@@ -687,7 +687,7 @@ def checkOut():
 
     emp_id = request.form['emp_id']
     # SELECT STATEMENT TO GET DATA FROM MYSQL
-    select_stmt = "SELECT check_in FROM employee WHERE emp_id = %(emp_id)s"
+    select_stmt = "SELECT checkIn FROM employee WHERE emp_id = %(emp_id)s"
     insert_statement="INSERT INTO attendance VALUES (%s,%s,%s,%s)"
     
     cursor = db_conn.cursor()
