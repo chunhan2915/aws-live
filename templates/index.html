@@ -106,8 +106,9 @@
             </div>
             {% if alert == True%}
                 {%if edit == True%}
-                <div class="alert alert-info" role="alert">
-                    Edit Successful
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <i class="fa fa-exclamation-circle me-2"></i>An icon & dismissing success alert—check it out!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 {%elif delete == True%}
                 <script>
