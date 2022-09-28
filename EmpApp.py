@@ -35,13 +35,12 @@ def home():
     edit = False
     delete = False
     add = False
+    name = ""
     try:
         edit = edit
         if(edit):
+            name = name
             alert = True
-        else:
-            edit = False
-            alert = False
     
     except Exception as e:
         return str(e)
@@ -49,10 +48,9 @@ def home():
     try:
         delete = delete
         if(delete):
+            name = name
             alert = True
-        else:
-            delete = False
-            alert = False
+        
     
     except Exception as e:
         return str(e)
@@ -60,10 +58,8 @@ def home():
     try:
         add = add
         if(add):
+            name = name
             alert = True
-        else:
-            add = False
-            alert = False
     
     except Exception as e:
         return str(e)
