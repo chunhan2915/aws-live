@@ -693,16 +693,16 @@ def checkOut():
     cursor = db_conn.cursor()
         
     try:
-        LoginDate = cursor.execute(select_stmt,{'emp_id':int(emp_id)})
-       
+        LoginTime = cursor.execute(select_stmt,{'emp_id':int(emp_id)})
+        formatted_checkIn = LoginTime.strftime('%Y-%m-%d %H:%M:%S')
         CheckoutTime=datetime.now()
         formatted_checkout = CheckoutTime.strftime('%Y-%m-%d %H:%M:%S')
-        Total_Working_Hours = CheckoutTime - LoginDate
+        Total_Working_Hours = CheckoutTime - LoginTime
         print(Total_Working_Hours)
 
          
         try:
-            cursor.execute(insert_statement,(emp_id,LoginDate,formatted_checkout,Total_Working_Hours))
+            cursor.execute(insert_statement,(emp_id,formatted_checkIn,formatted_checkout,Total_Working_Hours))
             db_conn.commit()
             print(" Data Inserted into MySQL")
             
@@ -717,7 +717,7 @@ def checkOut():
         cursor.close()
         
     return render_template("AttendanceOutput.html",emp_id = emp_id ,Checkout = formatted_checkout,
-     LoginTime=LoginDate,TotalWorkingHours=Total_Working_Hours)
+     LoginTime=formatted_checkIn,TotalWorkingHours=Total_Working_Hours)
 
 
 if __name__ == '__main__':
