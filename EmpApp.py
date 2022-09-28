@@ -694,7 +694,7 @@ def checkOut():
         
     try:
         cursor.execute(select_stmt,{'emp_id':int(emp_id)})
-        LoginTime= cursor.fetchall()
+        LoginDate= cursor.fetchall()
        
         for row in LoginTime:
             formatted_login = row
@@ -702,9 +702,8 @@ def checkOut():
         
 
         CheckoutTime=datetime.now()
-        LogininDate = datetime.strptime(formatted_login[0],'%Y-%m-%d %H:%M:%S')
         formatted_checkout = CheckoutTime.strftime('%Y-%m-%d %H:%M:%S')
-        Total_Working_Hours = CheckoutTime - LogininDate
+        Total_Working_Hours = CheckoutTime - LoginDate
         print(Total_Working_Hours)
 
          
@@ -712,7 +711,6 @@ def checkOut():
             cursor.execute(insert_statement,(emp_id,formatted_login[0],formatted_checkout,Total_Working_Hours))
             db_conn.commit()
             print(" Data Inserted into MySQL")
-            
             
         except Exception as e:
              return str(e)
