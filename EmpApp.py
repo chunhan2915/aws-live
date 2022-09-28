@@ -45,7 +45,7 @@ def home():
                 timeTotal = 0
             else:
                 for result in cursor:
-                    time = datetime.strptime(result[3],'%Y-%m-%d %H:%M:%S')
+                    time = datetime.strptime(result[3],'%H:%M:%S.%f')
                     timeTotal += time
         finally:
                 cursor.close()
