@@ -1,4 +1,5 @@
 from crypt import methods
+from ctypes import resize
 from select import select
 from sqlite3 import Cursor
 from flask import Flask, render_template, request
@@ -28,16 +29,33 @@ table = 'employee','leave'
 @app.route("/", methods=['GET', 'POST'])
 def home():
     select_emp = "SELECT * FROM employee"
+    select_att = "SELECT * FROM attendance"
     cursor = db_conn.cursor()
-    cursor.execute(select_emp)
-    data = cursor.fetchall()
-    count = cursor.rowcount
-    cursor.close()
+    try:
+        cursor.execute(select_emp)
+        data = cursor.fetchall()
+        count = cursor.rowcount
+        try:
+            cursor.execute(select_att)
+            count1 = cursor.rowcount
+            if count1 == 0:
+                timeTotal = 0
+            else:
+                for result in cursor:
+                    total = result[3].strftime('%H:%M:%S')
+                    timeTotal += total
+        finally:
+                cursor.close()
+    except Exception as e:
+            return str(e)
+   
+    
+
     
     if count == 0:
-        return render_template('index.html', noget=True,numEmployee=count)
+        return render_template('index.html', noget=True,numEmployee=count,timeTotal=timeTotal)
     else:
-        return render_template('index.html', employee=data,noget=False,numEmployee=count)
+        return render_template('index.html', employee=data,noget=False,numEmployee=count,timeTotal=timeTotal)
 
 
 @app.route("/addemp/", methods=['GET', 'POST'])
