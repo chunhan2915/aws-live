@@ -712,7 +712,8 @@ def checkOut():
             
             try:
                 LoginTime = "0000-00-00 00:00:00"
-                cursor.execute(update_stmt, { 'checkIn': LoginTime ,'emp_id':int(emp_id)})
+                formatted_login = LoginTime.strftime('%Y-%m-%d %H:%M:%S')
+                cursor.execute(update_stmt, { 'checkIn': formatted_login ,'emp_id':int(emp_id)})
                 db_conn.commit()
             
             except Exception as e:
