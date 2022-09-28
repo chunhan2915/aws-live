@@ -118,7 +118,7 @@ def SearchEmp():
         cursor.close()
 
     if count == 0:
-        return render_template('searchEmployee.html', alert=True)
+        return render_template('searchEmployee.html', alert=True,searchFail=True)
     else:
         return render_template("searchOutput.html",result=result)
     
