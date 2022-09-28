@@ -76,7 +76,7 @@ def AddEmp():
     salary = request.form['salary']
     emp_image_file = request.files['emp_image_file']
 
-    select_stmt = "SELECT emp_id FROM employee"
+    select_stmt = "SELECT * FROM employee"
 
     insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
@@ -87,7 +87,7 @@ def AddEmp():
     try:
         cursor.execute(select_stmt)
         for result in cursor:
-            if(emp_id == result):
+            if(emp_id == result[0]):
                 return render_template('addEmployee.html', alert=True,id=True)
 
         try:
@@ -120,10 +120,6 @@ def AddEmp():
             
     except Exception as e:
             return str(e)
-
-    
-
-    
 
 
 @app.route("/searchemp",methods=['POST','GET'])
