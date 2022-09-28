@@ -48,9 +48,9 @@ def displayEmp():
     cursor.close()
     
     if count == 0:
-        return render_template('displayEmployee.html', employee=True)
+        return render_template('displayEmployee.html', noget=True)
     else:
-        return render_template('displayEmployee.html', employee=data)
+        return render_template('displayEmployee.html', employee=data,noget=False)
 
 
 @app.route("/addemp", methods=['POST'])
