@@ -680,8 +680,7 @@ def checkIn():
     finally:
         cursor.close()
         
-    return render_template("message.html",date=datetime.now(),
-    LoginTime=formatted_login,alert=True,checkIn=True)
+    return render_template("message.html",LoginTime=formatted_login,alert=True,checkIn=True)
 
 @app.route("/checkOutAttendance/",methods=['GET','POST'])
 def checkOut():
