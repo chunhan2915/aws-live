@@ -36,7 +36,6 @@ def home():
     cursor.execute(select_emp)
     count = cursor.rowcount
     data = cursor
-    cursor.close()
 
     if count == 0:
         return render_template('index.html', noget=True,numEmployee=count)
