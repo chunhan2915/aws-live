@@ -61,6 +61,10 @@ def home():
 def addEmp():
     return render_template('addEmployee.html')
 
+@app.route("/about/", methods=['GET', 'POST'])
+def addEmp():
+    return render_template('about.html')
+
 
 @app.route("/searchemp/", methods=['GET', 'POST'])
 def searchEmp():
