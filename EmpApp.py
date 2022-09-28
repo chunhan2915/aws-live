@@ -606,7 +606,7 @@ def applyLeave():
     end_date = request.form['endDate']
     emp_image_file = request.files['supportDocument']
 
-    insert_sql = "INSERT INTO leave VALUES (%s,%s,%s,%s)"
+    insert_sql = "INSERT INTO employee.leave VALUES (%s,%s,%s,%s)"
     cursor = db_conn.cursor()
 
     if emp_image_file.filename == "":
