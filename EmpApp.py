@@ -639,6 +639,10 @@ def applyLeave():
 
     print("all modification done...")
     return render_template('index.html',alert=True,leave=True)
+@app.route("/addemp/", methods=['GET', 'POST'])
+def addEmp():
+    emp_id = request.form['emp_id']
+    return render_template('addLeave.html',emp_id=emp_id)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
