@@ -711,15 +711,6 @@ def checkOut():
             db_conn.commit()
             print(" Data Inserted into MySQL")
             
-            try:
-                LoginTime = "0000-00-00 00:00:00"
-                formatted_login = LoginTime.strftime('%Y-%m-%d %H:%M:%S')
-                cursor.execute(update_stmt, { 'checkIn': formatted_login ,'emp_id':int(emp_id)})
-                db_conn.commit()
-                print(" Data Inserted into MySQL")
-            
-            except Exception as e:
-                return str(e)
 
         except Exception as e:
             return str(e)
