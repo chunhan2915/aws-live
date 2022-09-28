@@ -32,6 +32,9 @@ def home():
     data = cursor.fetchall()
     count = cursor.rowcount
     cursor.close()
+    edit = False
+    delete = False
+    add = False
     try:
         edit = edit
         if(edit):
