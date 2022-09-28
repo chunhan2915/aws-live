@@ -49,7 +49,7 @@ def searchEmp():
     return render_template('searchEmployee.html')
 
 @app.route("/displayleave/", methods=['GET', 'POST'])
-def displayEmp():
+def displayLeave():
     select_emp = "SELECT * FROM employee.leave"
     cursor = db_conn.cursor()
     cursor.execute(select_emp)

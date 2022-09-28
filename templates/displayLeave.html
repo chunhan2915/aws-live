@@ -109,27 +109,18 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">ID</th>
-                                        <th scope="col">First Name</th>
-                                        <th scope="col">Last Name</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Phone Number</th>
-                                        <th scope="col">Position</th>
-                                        <th scope="col">Department</th>
-                                        <th scope="col">Salary</th>
+                                        <th scope="col">Reason</th>
+                                        <th scope="col">Start Date</th>
+                                        <th scope="col">End Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for data in employee %}
+                                    {% for data in leave %}
                                     <tr>
                                         <td>{{data.0}}</td>
                                         <td>{{data.1}}</td>
                                         <td>{{data.2}}</td>
                                         <td>{{data.3}}</td>
-                                        <td>{{data.4}}</td>
-                                        <td>{{data.5}}</td>
-                                        <td>{{data.6}}</td>
-                                        <td>{{data.7}}</td>
-                                        <td>{{data.8}}</td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>
