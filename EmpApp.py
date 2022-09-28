@@ -601,16 +601,12 @@ def conv_curr(amount):
 @app.route("/applyLeave",methods=['POST','GET'])
 def applyLeave():
     emp_id = request.form['emp_id']
-    first_name = request.form['first_name']
-    last_name = request.form['last_name']
-    email = request.form['email']
-    phone = request.form['phone']
-    position = request.form['position']
-    department = request.form['department']
-    salary = request.form['salary']
-    emp_image_file = request.files['emp_image_file']
+    reason = request.form['reason']
+    start_date = request.form['startDate']
+    end_date = request.form['endDate']
+    emp_image_file = request.files['supportDocument']
 
-    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+    insert_sql = "INSERT INTO leave VALUES (%s,%s,%s,%s)"
     cursor = db_conn.cursor()
 
     if emp_image_file.filename == "":
@@ -618,11 +614,10 @@ def applyLeave():
 
     try:
 
-        cursor.execute(insert_sql, (emp_id, first_name, last_name, email, phone,position,department,salary))
+        cursor.execute(insert_sql, (emp_id, reason,start_date,end_date))
         db_conn.commit()
-        emp_name = "" + first_name + " " + last_name
         # Uplaod image file in S3 #
-        emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file"
+        emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_LeaveDocument_" + start_date
         s3 = boto3.resource('s3')
 
         try:
@@ -643,7 +638,7 @@ def applyLeave():
         cursor.close()
 
     print("all modification done...")
-    return render_template('index.html', name=emp_name,alert=True,add=True)
+    return render_template('index.html',alert=True,leave=True)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
