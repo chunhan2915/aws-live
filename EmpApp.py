@@ -31,12 +31,20 @@ table = 'employee','leave'
 @app.route("/", methods=['GET', 'POST'])
 def home():
     select_emp = "SELECT * FROM employee"
+    select_att = "SELECT * FROM attendance"
     cursor = db_conn.cursor()
+    cursor1 = db_conn.cursor()
 
     try:
         cursor.execute(select_emp)
+        cursor1.execute(select_att)
         count = cursor.rowcount
         data = cursor.fetchall()
+        count1 = cursor1.rowcount
+        for result in cursor1:
+            if count1 != 0:
+                t1 = datetime.strptime(result[3], "%H:%M:%S")
+                time += t1
          
     except Exception as e:
         return str(e)
@@ -44,10 +52,9 @@ def home():
     finally:
             cursor.close()
     if count == 0:
-        return render_template('index.html', noget=True,numEmployee=count)
+        return render_template('index.html', noget=True,numEmployee=count,timeTotal=time)
     else:
-
-        return render_template('index.html', employee=data,noget=False,numEmployee=count)
+        return render_template('index.html', employee=data,noget=False,numEmployee=count,timeTotal=time)
     
     
 
