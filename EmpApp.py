@@ -2,6 +2,7 @@ from crypt import methods
 from ctypes import resize
 from select import select
 from sqlite3 import Cursor
+from typing import overload
 from flask import Flask, render_template, request
 from pymysql import connections
 import os
@@ -48,14 +49,12 @@ def home():
                 cursor.close()
     except Exception as e:
             return str(e)
-   
-    
-
     
     if count == 0:
-        return render_template('index.html', noget=True,numEmployee=count,timeTotal=timeTotal)
+        return render_template('index.html', noget=True,numEmployee=count,timeTotal=timeTotal,overall=timeTotal)
     else:
-        return render_template('index.html', employee=data,noget=False,numEmployee=count,timeTotal=timeTotal)
+        overall = timeTotal / count
+        return render_template('index.html', employee=data,noget=False,numEmployee=count,timeTotal=timeTotal,overall=overall)
 
 
 @app.route("/addemp/", methods=['GET', 'POST'])
