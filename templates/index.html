@@ -94,7 +94,18 @@
                 </div>
             </nav>
             <!-- Navbar End -->
-
+            {% if alert == True%}
+                {%if edit == True%}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <i class="fa fa-exclamation-circle me-2"></i>Sussessful edit {{name}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {%elif delete == True%}
+                <script>
+                    alert("{{name}}Delete Successful")
+                </script>
+                {% endif %}
+            {% endif %}
 
             <!-- Blank Start -->
             <div class="container-fluid pt-4 px-4">
@@ -104,18 +115,7 @@
                     </div>
                 </div>
             </div>
-            {% if alert == True%}
-                {%if edit == True%}
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <i class="fa fa-exclamation-circle me-2"></i>An icon & dismissing success alert—check it out!
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                {%elif delete == True%}
-                <script>
-                    alert("{{name}}Delete Successful")
-                </script>
-                {% endif %}
-            {% endif %}
+            
             
             <!-- Blank End -->
 
