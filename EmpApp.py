@@ -108,7 +108,7 @@ def AddEmp():
         cursor.close()
 
     print("all modification done...")
-    return render_template('index.html', name=emp_name,alert=True,add=True)
+    return render_template('message.html', name=emp_name,alert=True,add=True)
 
 
 @app.route("/searchemp",methods=['POST','GET'])
@@ -162,7 +162,7 @@ def deleteEmp():
         cursor.close()
         cursor1.close()
 
-    return render_template("index.html",name=emp_name,alert=True,delete=True)
+    return render_template("message.html",name=emp_name,alert=True,delete=True)
 
 @app.route("/edit",methods=['POST','GET'])
 def editEmp():
@@ -230,7 +230,7 @@ def EditEmp():
         cursor.close()
 
     print("all modification done...")
-    return render_template('index.html',alert=True,edit=True,name=emp_name)
+    return render_template('message.html',alert=True,edit=True,name=emp_name)
 
 @app.route("/calculate" ,methods=['POST','GET'])
 def calculateNetSalary():
@@ -648,7 +648,7 @@ def applyLeave():
         cursor.close()
 
     print("all modification done...")
-    return render_template('index.html',alert=True,leave=True)
+    return render_template('message.html',alert=True,leave=True)
 
 @app.route("/addLeave/", methods=['GET', 'POST'])
 def addLeave():
