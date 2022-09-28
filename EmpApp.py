@@ -6,6 +6,7 @@ from pymysql import connections
 import os
 import boto3
 from config import *
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -654,6 +655,79 @@ def applyLeave():
 def addLeave():
     emp_id = request.form['emp_id']
     return render_template('addLeave.html',emp_id=emp_id)
+
+@app.route("/checkInAttendance/",methods=['GET','POST'])
+def checkIn():
+    emp_id = request.form['emp_id']
+
+    #UPDATE STATEMENT
+    update_stmt= "UPDATE employee SET check_in =(%(check_in)s) WHERE emp_id = %(emp_id)s"
+
+    cursor = db_conn.cursor()
+
+    LoginTime = datetime.now()
+    formatted_login = LoginTime.strftime('%Y-%m-%d %H:%M:%S')
+    print ("Check in time:{}",formatted_login)
+
+    try:
+        cursor.execute(update_stmt, { 'check_in': formatted_login ,'emp_id':int(emp_id)})
+        db_conn.commit()
+        print(" Data Updated into MySQL")
+
+    except Exception as e:
+        return str(e)
+
+    finally:
+        cursor.close()
+        
+    return render_template("message.html",date=datetime.now(),
+    LoginTime=formatted_login,alert=True,checkIn=True)
+
+@app.route("/checkOutAttendance/",methods=['GET','POST'])
+def checkOut():
+
+    emp_id = request.form['emp_id']
+    # SELECT STATEMENT TO GET DATA FROM MYSQL
+    select_stmt = "SELECT check_in FROM employee WHERE emp_id = %(emp_id)s"
+    insert_statement="INSERT INTO attendance VALUES (%s,%s,%s,%s)"
+    
+    cursor = db_conn.cursor()
+        
+    try:
+        cursor.execute(select_stmt,{'emp_id':int(emp_id)})
+        LoginTime= cursor.fetchall()
+       
+        for row in LoginTime:
+            formatted_login = row
+            print(formatted_login[0])
+        
+
+        CheckoutTime=datetime.now()
+        LogininDate = datetime.strptime(formatted_login[0],'%Y-%m-%d %H:%M:%S')
+        formatted_checkout = CheckoutTime.strftime('%Y-%m-%d %H:%M:%S')
+        Total_Working_Hours = CheckoutTime - LogininDate
+        print(Total_Working_Hours)
+
+         
+        try:
+            cursor.execute(insert_statement,(emp_id,formatted_login[0],formatted_checkout,Total_Working_Hours))
+            db_conn.commit()
+            print(" Data Inserted into MySQL")
+            
+            
+        except Exception as e:
+             return str(e)
+                    
+                    
+    except Exception as e:
+        return str(e)
+
+    finally:
+        cursor.close()
+        
+    return render_template("AttendanceOutput.html",date=datetime.now(),Checkout = formatted_checkout,
+     LoginTime=formatted_login[0],TotalWorkingHours=Total_Working_Hours)
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
