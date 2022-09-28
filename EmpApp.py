@@ -1,9 +1,3 @@
-from crypt import methods
-from ctypes import resize
-from select import select
-from sqlite3 import Cursor
-from types import CoroutineType
-from typing import overload
 from flask import Flask, render_template, request
 from pymysql import connections
 import os
@@ -32,10 +26,10 @@ table = 'employee','leave'
 def home():
     select_emp = "SELECT * FROM employee"
     cursor = db_conn.cursor()
-    
     cursor.execute(select_emp)
     count = cursor.rowcount
     data = cursor
+    cursor.close()
 
     if count == 0:
         return render_template('index.html', noget=True,numEmployee=count)
@@ -47,11 +41,10 @@ def home():
 def displayAtt():
     select_emp = "SELECT * FROM attendance"
     cursor = db_conn.cursor()
-    
-    
     cursor.execute(select_emp)
     count = cursor.rowcount
     data = cursor
+    
      
     cursor.close()
     if count == 0:
