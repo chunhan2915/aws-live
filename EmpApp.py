@@ -47,13 +47,13 @@ def home():
                     timeTotal += total
         finally:
                 cursor.close()
-                if count == 0:
-                    return render_template('index.html', noget=True,numEmployee=count,timeTotal=timeTotal,overall=timeTotal)
-                else:
-                    overall = timeTotal / count
-                    return render_template('index.html', employee=data,noget=False,numEmployee=count,timeTotal=timeTotal,overall=overall)
     except Exception as e:
-            return str(e)
+        return str(e)
+    if count == 0:
+        return render_template('index.html', noget=True,numEmployee=count,timeTotal=timeTotal,overall=timeTotal)
+    else:
+        overall = timeTotal / count
+        return render_template('index.html', employee=data,noget=False,numEmployee=count,timeTotal=timeTotal,overall=overall)
     
     
 
