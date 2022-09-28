@@ -26,7 +26,17 @@ table = 'employee','leave'
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
-    return render_template('index.html')
+    select_emp = "SELECT * FROM employee"
+    cursor = db_conn.cursor()
+    cursor.execute(select_emp)
+    data = cursor.fetchall()
+    count = cursor.rowcount
+    cursor.close()
+    
+    if count == 0:
+        return render_template('index.html', noget=True,numEmployee=count)
+    else:
+        return render_template('index.html', employee=data,noget=False,numEmployee=count)
 
 
 @app.route("/addemp/", methods=['GET', 'POST'])
@@ -38,9 +48,9 @@ def addEmp():
 def searchEmp():
     return render_template('searchEmployee.html')
 
-@app.route("/displayemp/", methods=['GET', 'POST'])
+@app.route("/displayleave/", methods=['GET', 'POST'])
 def displayEmp():
-    select_emp = "SELECT * FROM employee"
+    select_emp = "SELECT * FROM employee.leave"
     cursor = db_conn.cursor()
     cursor.execute(select_emp)
     data = cursor.fetchall()
@@ -48,9 +58,9 @@ def displayEmp():
     cursor.close()
     
     if count == 0:
-        return render_template('displayEmployee.html', noget=True)
+        return render_template('displayLeave.html', noget=True)
     else:
-        return render_template('displayEmployee.html', employee=data,noget=False)
+        return render_template('displayLeave.html', employee=data,noget=False)
 
 
 @app.route("/addemp", methods=['POST'])
