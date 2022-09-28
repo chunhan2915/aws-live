@@ -587,5 +587,11 @@ def calculateEIS(result):
         employeeEIS = 0.05
     return employeeEIS,employerEIS
 
+@app.template_filter('conv_curr')
+def conv_curr(amount): 
+    import locale
+    locale.setlocale(locale.LC_ALL, 'en_US.UTF-8') 
+    return locale.currency(amount)
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
