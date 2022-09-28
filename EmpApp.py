@@ -60,7 +60,7 @@ def displayLeave():
     if count == 0:
         return render_template('displayLeave.html', noget=True)
     else:
-        return render_template('displayLeave.html', employee=data,noget=False)
+        return render_template('displayLeave.html', leave=data,noget=False)
 
 
 @app.route("/addemp", methods=['POST'])
