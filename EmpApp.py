@@ -692,7 +692,7 @@ def checkOut():
     
     cursor = db_conn.cursor()
     LoginTime = cursor.execute(select_stmt,{'emp_id':int(emp_id)})
-    formatted_checkIn = LoginTime.strftime('%Y-%m-%d %H:%M:%S')
+    print(LoginTime)
     CheckoutTime=datetime.now()
     formatted_checkout = CheckoutTime.strftime('%Y-%m-%d %H:%M:%S')
     Total_Working_Hours = CheckoutTime - LoginTime
