@@ -690,8 +690,9 @@ def checkOut():
     select_stmt = "SELECT checkIn FROM employee WHERE emp_id = %(emp_id)s"
     insert_statement="INSERT INTO attendance VALUES (%s,%s,%s,%s)"
     update_stmt= "UPDATE employee SET checkIn =(%(checkIn)s) WHERE emp_id = %(emp_id)s"
+    cursor = db_conn.cursor()
     try:
-        cursor = db_conn.cursor()
+        
         cursor.execute(select_stmt,{'emp_id':int(emp_id)})
         LoginTime= cursor.fetchall()
        
@@ -715,6 +716,7 @@ def checkOut():
                 formatted_login = LoginTime.strftime('%Y-%m-%d %H:%M:%S')
                 cursor.execute(update_stmt, { 'checkIn': formatted_login ,'emp_id':int(emp_id)})
                 db_conn.commit()
+                print(" Data Inserted into MySQL")
             
             except Exception as e:
                 return str(e)
