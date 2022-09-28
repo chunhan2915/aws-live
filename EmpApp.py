@@ -32,7 +32,7 @@ def home():
     select_emp = "SELECT * FROM employee"
     select_att = "SELECT * FROM attendance"
     cursor = db_conn.cursor()
-    timeTotal = 0
+    timeTotal = "00:00:00"
     try:
         cursor.execute(select_emp)
         count = cursor.rowcount
@@ -45,8 +45,10 @@ def home():
                 timeTotal = 0
             else:
                 for result in cursor:
+                    total = datetime.strptime(result[3],'%H:%M:%S.%f')
                     time = datetime.strptime(result[3],'%H:%M:%S.%f')
-                    timeTotal += time
+                    total += time
+                    finalTime = total.total_seconds()/3600
         finally:
                 cursor.close()
     except Exception as e:
@@ -54,7 +56,7 @@ def home():
     if count == 0:
         return render_template('index.html', noget=True,numEmployee=count,timeTotal=timeTotal,overall=timeTotal)
     else:
-        overall = timeTotal / count
+        overall = finalTime / count
         return render_template('index.html', employee=data,noget=False,numEmployee=count,timeTotal=timeTotal,overall=overall)
     
     
