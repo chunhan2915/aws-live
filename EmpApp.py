@@ -21,7 +21,7 @@ db_conn = connections.Connection(
 
 )
 output = {}
-table = 'employee'
+table = 'employee','leave'
 
 
 @app.route("/", methods=['GET', 'POST'])
@@ -639,7 +639,7 @@ def applyLeave():
 
     print("all modification done...")
     return render_template('index.html',alert=True,leave=True)
-    
+
 @app.route("/addLeave/", methods=['GET', 'POST'])
 def addEmp():
     emp_id = request.form['emp_id']
