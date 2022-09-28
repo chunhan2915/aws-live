@@ -36,7 +36,7 @@ def home():
     try:
         cursor.execute(select_emp)
         count = cursor.rowcount
-        data = cursor.fetchall()
+        data = cursor
      
     except Exception as e:
         return str(e)
@@ -57,7 +57,7 @@ def displayAtt():
     try:
         cursor.execute(select_emp)
         count = cursor.rowcount
-        data = cursor.fetchall()
+        data = cursor
      
     except Exception as e:
         return str(e)
@@ -89,7 +89,7 @@ def displayEmp():
     select_emp = "SELECT * FROM employee.leave"
     cursor = db_conn.cursor()
     cursor.execute(select_emp)
-    data = cursor.fetchall()
+    data = cursor
     count = cursor.rowcount
     cursor.close()
     
@@ -740,7 +740,7 @@ def checkOut():
     try:
         
         cursor.execute(select_stmt,{'emp_id':int(emp_id)})
-        LoginTime= cursor.fetchall()
+        LoginTime= cursor
        
         for row in LoginTime:
             formatted_login = row
