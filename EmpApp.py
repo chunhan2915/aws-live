@@ -2,6 +2,7 @@ from crypt import methods
 from ctypes import resize
 from select import select
 from sqlite3 import Cursor
+from types import CoroutineType
 from typing import overload
 from flask import Flask, render_template, request
 from pymysql import connections
@@ -30,34 +31,23 @@ table = 'employee','leave'
 @app.route("/", methods=['GET', 'POST'])
 def home():
     select_emp = "SELECT * FROM employee"
-    select_att = "SELECT * FROM attendance"
     cursor = db_conn.cursor()
-    timeTotal = "00:00:00"
+
     try:
         cursor.execute(select_emp)
         count = cursor.rowcount
         data = cursor.fetchall()
-        try:
-            cursor.execute(select_att)
-            count1 = cursor.rowcount
-            
-            if count1 == 0:
-                timeTotal = 0
-            else:
-                for result in cursor:
-                    total = datetime.strptime(result[3],'%H:%M:%S.%f')
-                    time = datetime.strptime(result[3],'%H:%M:%S.%f')
-                    total += time
-                    finalTime = total.total_seconds()/3600
-        finally:
-                cursor.close()
+         
     except Exception as e:
         return str(e)
+
+    finally:
+            cursor.close()
     if count == 0:
-        return render_template('index.html', noget=True,numEmployee=count,timeTotal=timeTotal,overall=timeTotal)
+        return render_template('index.html', noget=True,numEmployee=count)
     else:
-        overall = finalTime / count
-        return render_template('index.html', employee=data,noget=False,numEmployee=count,timeTotal=timeTotal,overall=overall)
+
+        return render_template('index.html', employee=data,noget=False,numEmployee=count)
     
     
 
