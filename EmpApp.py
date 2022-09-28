@@ -24,6 +24,14 @@ table = 'employee','leave'
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb
+
+)
     select_emp = "SELECT * FROM employee"
     cursor = db_conn.cursor()
     cursor.execute(select_emp)
@@ -39,6 +47,14 @@ def home():
 
 @app.route("/displayatt/", methods=['GET', 'POST'])
 def displayAtt():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb
+
+)
     select_emp = "SELECT * FROM attendance"
     cursor = db_conn.cursor()
     cursor.execute(select_emp)
@@ -69,6 +85,14 @@ def searchEmp():
 
 @app.route("/displayleave/", methods=['GET', 'POST'])
 def displayEmp():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb
+
+)
     select_emp = "SELECT * FROM employee.leave"
     cursor = db_conn.cursor()
     cursor.execute(select_emp)
@@ -84,6 +108,14 @@ def displayEmp():
 
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb
+
+)
     emp_id = request.form['emp_id']
     first_name = request.form['first_name']
     last_name = request.form['last_name']
@@ -143,7 +175,14 @@ def AddEmp():
 
 @app.route("/searchemp",methods=['POST','GET'])
 def SearchEmp():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb
 
+)
     emp_id = request.form['emp_id']
 
     select_emp = "SELECT * FROM employee WHERE emp_id = %(emp_id)s"
@@ -170,7 +209,14 @@ def SearchEmp():
 
 @app.route("/delete",methods=['POST','GET'])
 def deleteEmp():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb
 
+)
     emp_id = request.form['emp_id']
     select_emp = "SELECT * FROM employee WHERE emp_id = %(emp_id)s"
     delete_emp = "DELETE FROM employee WHERE emp_id = %(emp_id)s"
@@ -197,6 +243,14 @@ def deleteEmp():
     
 @app.route("/edit",methods=['POST','GET'])
 def editEmp():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb
+
+)
     emp_id = request.form['emp_id']
     select_emp = "SELECT * FROM employee WHERE emp_id = %(emp_id)s"
     cursor = db_conn.cursor()
@@ -220,7 +274,14 @@ def editEmp():
 
 @app.route("/editemp",methods=['POST','GET'])
 def EditEmp():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb
 
+)
     emp_id = request.form['emp_id']
     first_name = request.form['first_name']
     last_name = request.form['last_name']
@@ -265,6 +326,14 @@ def EditEmp():
 
 @app.route("/calculate" ,methods=['POST','GET'])
 def calculateNetSalary():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb
+
+)
     emp_id = request.form['emp_id']
     select_emp = "SELECT * FROM employee WHERE emp_id = %(emp_id)s"
     cursor = db_conn.cursor()
@@ -639,6 +708,14 @@ def conv_curr(amount):
 
 @app.route("/addLeave",methods=['POST','GET'])
 def applyLeave():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb
+
+)
     emp_id = request.form['emp_id']
     reason = request.form['reason']
     start_date = request.form['startDate']
@@ -681,11 +758,20 @@ def applyLeave():
 
 @app.route("/addLeave/", methods=['GET', 'POST'])
 def addLeave():
+    
     emp_id = request.form['emp_id']
     return render_template('addLeave.html',emp_id=emp_id)
 
 @app.route("/checkInAttendance/",methods=['GET','POST'])
 def checkIn():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb
+
+)
     emp_id = request.form['emp_id']
 
     #UPDATE STATEMENT
@@ -712,7 +798,14 @@ def checkIn():
 
 @app.route("/checkOutAttendance/",methods=['GET','POST'])
 def checkOut():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb
 
+)
     emp_id = request.form['emp_id']
     # SELECT STATEMENT TO GET DATA FROM MYSQL
     select_stmt = "SELECT checkIn FROM employee WHERE emp_id = %(emp_id)s"
