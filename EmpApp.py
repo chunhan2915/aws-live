@@ -720,7 +720,7 @@ def checkOut():
     finally:
         cursor.close()
         
-    return render_template("attendence.html",emp_id = emp_id ,Checkout = formatted_checkout,
+    return render_template("attendance.html",emp_id = emp_id ,Checkout = formatted_checkout,
      LoginTime=formatted_login[0],TotalWorkingHours=Total_Working_Hours)
 
 
