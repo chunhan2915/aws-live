@@ -590,7 +590,7 @@ def calculateEIS(result):
 @app.template_filter('conv_curr')
 def conv_curr(amount): 
     import locale
-    locale.setlocale(locale.LC_ALL, 'en_US.UTF-8') 
+    locale.setlocale(locale.LC_ALL, 'ms_MY') 
     return locale.currency(amount)
 
 if __name__ == '__main__':

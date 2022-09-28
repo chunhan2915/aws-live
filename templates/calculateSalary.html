@@ -122,11 +122,11 @@
                                     </tr>
                                     <tr>
                                         <th scope="col">Salary</th>
-                                        <th scope="row">{{result[7]}}</th>
+                                        <th scope="row">{{result[7]|conv_curr }}</th>
                                     </tr>
                                     <tr>
                                         <th scope="col"><strong><mark>Net Salary</mark></strong></th>
-                                        <th scope="row"><strong><mark>{{net}}</mark></strong></th>
+                                        <th scope="row"><strong><mark>{{net|conv_curr }}</mark></strong></th>
                                     </tr>
                                 </tbody>
                             </table>
@@ -142,22 +142,22 @@
                                     <tr>
                                         <th scope="row">EPF:</th>
                                         <td>{{employerEpf|conv_curr }}</td>
-                                        <td>{{employeeEpf}}</td>
+                                        <td>{{employeeEpf|conv_curr }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">SOCSO:</th>
-                                        <td>{{employerSocso}}</td>
-                                        <td>{{employeeSocso}}</td>
+                                        <td>{{employerSocso|conv_curr }}</td>
+                                        <td>{{employeeSocso|conv_curr }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">EIS:</th>
-                                        <td>{{employerEIS}}</td>
-                                        <td>{{employeeEIS}}</td>
+                                        <td>{{employerEIS|conv_curr }}</td>
+                                        <td>{{employeeEIS|conv_curr }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Total:</th>
-                                        <td>{{totalEmployer}}</td>
-                                        <td>{{totalEmployee}}</td>
+                                        <td>{{totalEmployer|conv_curr }}</td>
+                                        <td>{{totalEmployee|conv_curr }}</td>
                                     </tr>
                                 </tbody>
                             </table>
