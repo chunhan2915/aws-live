@@ -50,7 +50,7 @@ def home():
     
 
 @app.route("/displayatt/", methods=['GET', 'POST'])
-def home():
+def displayAtt():
     select_emp = "SELECT * FROM attendance"
     cursor = db_conn.cursor()
     
