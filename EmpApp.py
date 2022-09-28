@@ -128,7 +128,6 @@ def AddEmp():
     checkIn = "0000-00-00 00:00:00"
 
     select_stmt = "SELECT * FROM employee"
-
     insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s,%s)"
     cursor = db_conn.cursor()
 
