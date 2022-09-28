@@ -69,14 +69,7 @@
             </nav>
         </div>
         <!-- Sidebar End -->
-        {% if alert == True%}
-                {%if searchFail == True%}
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <i class="fa fa-exclamation-circle me-2"></i>ID is not in database! Please Check Again!
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {% endif %}
-        {% endif %}
+        
 
         <!-- Content Start -->
         <div class="content">
@@ -101,7 +94,14 @@
                 </div>
             </nav>
             <!-- Navbar End -->
-
+            {% if alert == True%}
+                {%if searchFail == True%}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <i class="fa fa-exclamation-circle me-2"></i>ID is not in database! Please Check Again!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+            {% endif %}
 
             <!-- Blank Start -->
             <div class="container-fluid pt-4 px-4">
