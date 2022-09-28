@@ -180,7 +180,7 @@ def deleteEmp():
             finally:
                 cursor.close()
                 cursor1.close()
-            return render_template("message.html",name=emp_name,alert=True,delete=True)
+                return render_template("message.html",name=emp_name,alert=True,delete=True)
 
         except Exception as e:
             return str(e)
