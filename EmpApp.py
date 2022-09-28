@@ -62,7 +62,7 @@ def addEmp():
     return render_template('addEmployee.html')
 
 @app.route("/about/", methods=['GET', 'POST'])
-def addEmp():
+def about():
     return render_template('about.html')
 
 
