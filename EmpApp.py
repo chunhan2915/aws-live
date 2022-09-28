@@ -156,27 +156,34 @@ def deleteEmp():
     emp_id = request.form['emp_id']
     select_emp = "SELECT * FROM employee WHERE emp_id = %(emp_id)s"
     delete_emp = "DELETE FROM employee WHERE emp_id = %(emp_id)s"
+    select_leave = "SELECT * FROM employee.leave WHERE emp_id = %s"
     cursor = db_conn.cursor()
     cursor1 = db_conn.cursor()
 
     try:
         cursor.execute(select_emp, {'emp_id': int(emp_id)})
-        cursor1.execute(delete_emp, {'emp_id': int(emp_id)})
         for result in cursor:
             print(result)
-        db_conn.commit()
         emp_name = "" + result[1] + " " + result[2]
-        emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file"
-        s3 = boto3.resource('s3')
+        cursor1.execute(select_leave,(emp_id))
+        
         try:
-            key = "emp-id-" + str(emp_id) + "_image_file"
-            s3.delete_object(Bucket='mybucketname', Key=key)
-        finally:
-            cursor.close()
-            cursor1.close()
-
+            cursor.execute(delete_emp, {'emp_id': int(emp_id)})
+            db_conn.commit()
+            s3 = boto3.resource('s3')
+            try:
+                key = "emp-id-" + str(emp_id) + "_image_file"
+                s3.delete_object(Bucket='mybucketname', Key=key)
+                for leaveResult in cursor1:
+                    key = "emp-id-"+str(emp_id) + "_LeaveDocument_"+ leaveResult[2]
+                    s3.delete_object(Bucket='mybucketname', Key=key)
+            finally:
+                cursor.close()
+                cursor1.close()
             return render_template("message.html",name=emp_name,alert=True,delete=True)
 
+        except Exception as e:
+            return str(e)
     except Exception as e:
         db_conn.rollback()
         return str(e)
