@@ -43,7 +43,7 @@ def home():
         count1 = cursor1.rowcount
         for result in cursor1:
             if count1 != 0:
-                t1 = datetime.strptime(result[3], "%H:%M:%S")
+                t1 = datetime.strptime(result[3], "%H:%M:%S.%f")
                 time += t1
          
     except Exception as e:
