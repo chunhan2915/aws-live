@@ -32,6 +32,7 @@ def home():
     select_emp = "SELECT * FROM employee"
     select_att = "SELECT * FROM attendance"
     cursor = db_conn.cursor()
+    timeTotal = 0
     try:
         cursor.execute(select_emp)
         count = cursor.rowcount
@@ -39,6 +40,7 @@ def home():
         try:
             cursor.execute(select_att)
             count1 = cursor.rowcount
+            
             if count1 == 0:
                 timeTotal = 0
             else:
